@@ -24,7 +24,7 @@ public class Producer {
         // Create Kafka Producer
         final KafkaProducer<String, String> producer = new KafkaProducer<>(prop);
 
-        String csvFilePath = "D:\\kafka_stream_application\\src\\main\\dataset\\eventlog.csv"; // Replace with the actual path to the CSV file
+        String csvFilePath = "D:\\Kafka-Stream-Application\\Kafka-Stream-Application\\src\\main\\dataset\\eventlog.csv"; // Replace with the actual path to the CSV file
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
             String headerLine = br.readLine(); // Skip the header
