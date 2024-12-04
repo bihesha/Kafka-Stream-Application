@@ -63,7 +63,7 @@ public class Producer {
 
                 // Create the ProducerRecord
                 ProducerRecord<String, String> record = new ProducerRecord<>(
-                        "logs-topic-1", // Kafka topic name
+                        "logs-topic-2", // Kafka topic name
                         "log_" + logId, // Key
                         logEntry.toString() // Value as JSON string
                 );
@@ -83,6 +83,14 @@ public class Producer {
                 });
 
                 logId++;
+
+                // Introduce a delay of 5 seconds
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    logger.error("Interrupted while sleeping", e);
+                    Thread.currentThread().interrupt();
+                }
             }
 
         } catch (IOException e) {
