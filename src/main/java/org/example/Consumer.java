@@ -29,7 +29,7 @@ public class Consumer {
         StreamsBuilder builder = new StreamsBuilder();
 
         // Read data from the Kafka topic
-        KStream<String, String> logs = builder.stream("logs-topic-1");
+        KStream<String, String> logs = builder.stream("logs-topic-2");
 
         // Use a transformer to access metadata
         logs.transform(() -> new Transformer<String, String, KeyValue<String, String>>() {
