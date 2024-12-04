@@ -63,7 +63,7 @@ public class MicroBatchProcessor {
 
                             // Send processed log to another topic
                             ProducerRecord<String, String> record = new ProducerRecord<>(
-                                    "processed-logs-topic",
+                                    "processed-logs-topic-1",
                                     log.getString("MachineName"),
                                     log.toString()
                             );

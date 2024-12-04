@@ -20,7 +20,7 @@ public class Consumer {
 
         // Kafka Streams configuration
         Properties config = new Properties();
-        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "log-processor");
+        config.put(StreamsConfig.APPLICATION_ID_CONFIG, "log-consumer");
         config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass().getName());
@@ -28,11 +28,11 @@ public class Consumer {
         // Create StreamsBuilder
         StreamsBuilder builder = new StreamsBuilder();
 
-        // Read data from the Kafka topic
-        KStream<String, String> logs = builder.stream("logs-topic-2");
+        // Read data from the processed-logs-topic
+        KStream<String, String> processedLogs = builder.stream("processed-logs-topic-1");
 
         // Use a transformer to access metadata
-        logs.transform(() -> new Transformer<String, String, KeyValue<String, String>>() {
+        processedLogs.transform(() -> new Transformer<String, String, KeyValue<String, String>>() {
             private ProcessorContext context;
 
             @Override
